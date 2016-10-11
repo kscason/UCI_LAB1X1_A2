@@ -1,0 +1,46 @@
+set 0, 3
+set 1, 5
+jump 34
+#fib(n)
+jumpt 11, D[D[0]+2] > 2
+#return_from_fib	
+set D[0] - 1, 1
+set 1, D[0]
+set 0, D[D[0]+1]
+jump D[D[1]]
+#end_of_if AND start fib(n-2)
+set 1, D[1] + 1 
+set D[1], 19
+set D[1] + 1, D[0]
+set D[1] + 2, D[D[0]+2] - 2
+set 0, D[1] 
+set 1, D[1] + 4
+jump 4
+#end_of_fib(n-2) AND assign local
+set D[0]+3, D[D[1]-1]
+#call_fib(n-1)
+set 1, D[1] + 1 
+set D[1], 29
+set D[1] + 1, D[0]
+set D[1] + 2, D[D[0]+2] - 1
+set 0, D[1] 
+set 1, D[1] + 4
+jump 4
+#return_from_fib
+set D[0] - 1, D[D[1]-1] + D[D[0]+3]
+set 1, D[0]
+set 0, D[D[0]+1]
+jump D[D[1]]
+#MAIN
+set 2, read
+#call_fib(n)
+set 1, D[1] + 1 
+set D[1], 44
+set D[1] + 1, D[0]
+set D[1] + 2, D[2]
+set 0, D[1] 
+set 1, D[1] + 4
+jump 4
+#end_of_call
+set write, D[D[1]-1]
+halt
